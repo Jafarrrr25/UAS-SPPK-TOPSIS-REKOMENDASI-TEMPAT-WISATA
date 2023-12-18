@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lihat Data</title>
+    <style>
+        .data {
+            width: 100%;
+            border-collapse: collapse;
+            
+        }
+        .data th, .data td {
+            border: 1px solid black;
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+</head>
+<body>
+    <h1>Data Awal</h1>
+    {% for table in tables %}
+        {{ table|safe }}
+    {% endfor %}
+</body>
+</html>
