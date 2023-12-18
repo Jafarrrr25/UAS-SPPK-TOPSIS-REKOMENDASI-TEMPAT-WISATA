@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tambah Data Tempat Wisata</title>
+  </head>
+  <body>
+    <h1>Tambah Data Tempat Wisata</h1>
+
+    <form method="POST" action="{{ url_for('tambah_data') }}">
+      <label for="nama_tempat">Masukkan Nama Tempat:</label>
+      <input type="text" name="nama_tempat" required /><br />
+
+      <label for="rating_maps">Masukkan Bobot Rating Maps:</label>
+      <input type="text" name="rating_maps" required /><br />
+
+      <label for="harga_tiket">Masukkan Bobot Harga Tiket:</label>
+      <input type="text" name="harga_tiket" required /><br />
+
+      <label for="komentar">Masukkan Bobot Komentar:</label>
+      <input type="text" name="komentar" required /><br />
+
+      <label for="respon_pemilik">Masukkan Bobot Respon Pemilik:</label>
+      <input type="text" name="respon_pemilik" required /><br />
+
+      <label for="foto">Masukkan Bobot Foto:</label>
+      <input type="text" name="foto" required /><br />
+
+      <input type="submit" value="Simpan Data" />
+    </form>
+
+    <form method="GET" action="{{ url_for('home') }}">
+      <button type="submit">Kembali</button>
+    </form>
+
+    <br />
+    <table border="1">
+      <tr>
+        <th>Nama Tempat</th>
+        <th>Rating Maps</th>
+        <th>Harga Tiket</th>
+        <th>Komentar</th>
+        <th>Respon Pemilik</th>
+        <th>Foto</th>
+      </tr>
+      {% for row in data %}
+      <tr>
+        {% for value in row %}
+        <td>{{ value }}</td>
+        {% endfor %}
+      </tr>
+      {% endfor %}
+    </table>
+  </body>
+</html>
