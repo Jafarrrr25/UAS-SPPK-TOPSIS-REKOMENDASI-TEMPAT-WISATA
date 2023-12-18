@@ -4,54 +4,31 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
     <title>Tambah Data Tempat Wisata</title>
   </head>
-  <body>
-    <h1>Tambah Data Tempat Wisata</h1>
+  <body class="bg-zinc-900 text-white">
+    <h1 class="text-4xl text-white font-bold mb-4 flex flex-col items-center">Tambah Data Tempat Wisata</h1>
 
-    <form method="POST" action="{{ url_for('tambah_data') }}">
-      <label for="nama_tempat">Masukkan Nama Tempat:</label>
-      <input type="text" name="nama_tempat" required /><br />
+    <form method="POST" action="/tambah_data" class="max-w-md mx-auto">
+        <div class="relative z-0 w-full mb-5 group">
+          <input type="text" name="nama_tempat" id="nama_tempat" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Nama Tempat " required />
+          
+          <input type="text" name="rating_maps" id="rating_maps" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Rating Maps" required />
 
-      <label for="rating_maps">Masukkan Bobot Rating Maps:</label>
-      <input type="text" name="rating_maps" required /><br />
+          <input type="text" name="harga_tiket" id="harga_tiket" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Harga Tiket" required />
 
-      <label for="harga_tiket">Masukkan Bobot Harga Tiket:</label>
-      <input type="text" name="harga_tiket" required /><br />
+          <input type="text" name="Komentar" id="Komentar" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Komentar" required />
 
-      <label for="komentar">Masukkan Bobot Komentar:</label>
-      <input type="text" name="komentar" required /><br />
+          <input type="text" name="foto" id="foto" class="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer" placeholder="Foto" required />
+        </div>
 
-      <label for="respon_pemilik">Masukkan Bobot Respon Pemilik:</label>
-      <input type="text" name="respon_pemilik" required /><br />
-
-      <label for="foto">Masukkan Bobot Foto:</label>
-      <input type="text" name="foto" required /><br />
-
-      <input type="submit" value="Simpan Data" />
-    </form>
-
-    <form method="GET" action="{{ url_for('home') }}">
-      <button type="submit">Kembali</button>
-    </form>
+        <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Submit</button>
+  </form>
+  
 
     <br />
-    <table border="1">
-      <tr>
-        <th>Nama Tempat</th>
-        <th>Rating Maps</th>
-        <th>Harga Tiket</th>
-        <th>Komentar</th>
-        <th>Respon Pemilik</th>
-        <th>Foto</th>
-      </tr>
-      {% for row in data %}
-      <tr>
-        {% for value in row %}
-        <td>{{ value }}</td>
-        {% endfor %}
-      </tr>
-      {% endfor %}
-    </table>
+    
   </body>
 </html>

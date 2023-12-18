@@ -1,41 +1,43 @@
 <!DOCTYPE html>
 <html>
     <title>Perhitungan TOPSIS</title>
-<body>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+<body class="bg-zinc-900 text-white">
 
-    <button id="btn1" onclick="calculate1()">Matriks Pembagi</button>
-    <button id="btn2" onclick="calculate2()" disabled>Normalisasi Tabel</button>
-    <button id="btn3" onclick="calculate3()" disabled>Matriks Ternormalisasi</button>
-    <button id="btn4" onclick="calculate4()" disabled>Solusi Alternatif</button>
-    <button id="btn5" onclick="calculate5()" disabled>Jarak Alternatif</button>
-    <button id="btn6" onclick="calculate6()" disabled>Nilai Preferensi</button>
-    <button id="btn7" onclick="calculate7()" disabled>Ranking dan Hasil Akhir Perhitungan</button>
+    <button id="btn1" onclick="calculate1()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white">Matriks Pembagi</button>
+    <button id="btn2" onclick="calculate2()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Normalisasi Tabel</button>
+    <button id="btn3" onclick="calculate3()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Matriks Ternormalisasi</button>
+    <button id="btn4" onclick="calculate4()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Solusi Alternatif</button>
+    <button id="btn5" onclick="calculate5()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Jarak Alternatif</button>
+    <button id="btn6" onclick="calculate6()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Nilai Preferensi</button>
+    <button id="btn7" onclick="calculate7()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Ranking dan Hasil Akhir Perhitungan</button>
 
-<h2>Nilai Matriks Pembagi</h2>
+    <h2 class="text-md text-white font-bold mb-4">Nilai Matriks Pembagi</h2>
 <div id="result"></div>
 
-<h2>Normalisasi Tabel</h2>
+<h2 class="text-md text-white font-bold mb-4">Normalisasi Tabel</h2>
 <div id="normalisasi"></div>
 
-<h2>Matriks Ternormalisasi</h2>
+<h2 class="text-md text-white font-bold mb-4">Matriks Ternormalisasi</h2>
 <div id="terbobot"></div>
 
-<h2>Solusi Alternatif</h2>
-<button id="btn8" onclick="calculate8()" disabled>Solusi Negatif</button>
-<button id="btn9" onclick="calculate9()" disabled>Solusi Positif</button>
+<h2 class="text-md text-white font-bold mb-4">Solusi Alternatif</h2>
+<button id="btn8" onclick="calculate8()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Solusi Negatif</button>
+<button id="btn9" onclick="calculate9()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Solusi Positif</button>
 <br><div id="minusSolution"></div>
 <br><div id="plusSolution"></div>
 
-<h2>Jarak Alternatif</h2>
-<button id="btn10" onclick="calculate10()" disabled>Jarak Alternatif Negatif</button>
-<button id="btn11" onclick="calculate11()" disabled>Jarak Alternatif Positif</button>
+<h2 class="text-md text-white font-bold mb-4">Jarak Alternatif</h2>
+<button id="btn10" onclick="calculate10()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Jarak Alternatif Negatif</button>
+<button id="btn11" onclick="calculate11()" class="px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-2 focus:ring-blue-700 focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" disabled>Jarak Alternatif Positif</button>
 <br><div id="minAlternatif"></div>
 <br><div id="plusAlternatif"></div>
 
-<h2>Nilai Preferensi</h2>
+<h2 class="text-md text-white font-bold mb-4">Nilai Preferensi</h2>
 <div id="preferensi"></div>
 
-<h2>Ranking Preferensi</h2>
+<h2 class="text-md text-white font-bold mb-4">Ranking Preferensi</h2>
 <div id="rank"></div>
 
 

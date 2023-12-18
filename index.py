@@ -33,16 +33,10 @@ def lihat_pembobotan():
 
 @app.route('/tambah_data', methods=['GET', 'POST'])
 def tambah_data():
+    data = pd.read_excel('Dataset Wisata.xlsx')
     if request.method == 'POST':
-        # Buka file excel
-        wb = openpyxl.load_workbook('Dataset Wisata.xlsx')
-        sheet = wb.active
-
-        # cari baris terakhir untuk menentukan nilai "No" yang baru
-        last_row_no = sheet.max_row
-
         # Hitung nilai No yang baru
-        new_no = last_row_no + 1
+        new_no = data.index[-1]
 
         nama_tempat = request.form['nama_tempat']
         rating_maps = request.form['rating_maps']
@@ -51,25 +45,16 @@ def tambah_data():
         respon_pemilik = request.form['respon_pemilik']
         foto = request.form['foto']
 
-        # Tambahkan data ke excelnya
-        new_data = [new_no, nama_tempat, rating_maps, harga_tiket, komentar, respon_pemilik, foto]
-        sheet.append(new_data)
+        # Tambahkan data ke dataframe
+        new_data = {'No': new_no, 'Nama Tempat': nama_tempat, 'Rating Maps': rating_maps, 'Harga Tiket': harga_tiket, 'Komentar': komentar, 'Respon Pemilik': respon_pemilik, 'Foto': foto}
+        data = data.append(new_data, ignore_index=True)
 
-        # Simpan dan tutup 
-        wb.save('Dataset Wisata.xlsx')
-        wb.close()
+        # Simpan dataframe ke file excel
+        data.to_excel('Dataset Wisata.xlsx', index=False)
 
-    # Menampilkan excel 
-    wb = openpyxl.load_workbook('Dataset Wisata.xlsx')
-    sheet = wb.active
-    data = list(sheet.iter_rows(min_row=2, values_only=True))
+        return 'Data berhasil ditambahkan!'
 
-    # Tidak memasukkan kolom "No"
-    data_without_no = [row[1:] for row in data]
-
-    wb.close()
-
-    return render_template('tambah_data.html', data=data_without_no)
+    return render_template('tambah_data.html')
 
 @app.route('/topsis')
 def topsis():
